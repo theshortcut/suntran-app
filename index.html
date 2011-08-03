@@ -1,0 +1,69 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+    <title>SunTran</title> 
+    <link rel="stylesheet" href="jquery.mobile-1.0b1.min.css" />
+    <link rel="stylesheet" href="suntran.css" />
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="js/libs/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="js/libs/jquery.mobile-1.0b1.min.js"></script>
+    <script type="text/javascript" src="js/libs/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="js/libs/jquery.ui.map.min.js"></script>
+    <script type="text/javascript" src="js/suntran.js"></script>
+  </head> 
+  <body> 
+
+    <div data-role="page" data-theme="b" id="routes">
+      <div data-role="header">
+        <h1>Routes</h1>
+      </div><!-- /header -->
+      <div data-role="content" class="content">
+        <ul data-role="listview" data-filter="true">
+        </ul>
+      </div><!-- /content -->
+    </div><!-- /page -->
+
+    <div data-role="page" data-theme="b" data-add-back-btn="true" id="schedules">
+      <div data-role="header">
+        <h1>Schedules</h1>
+      </div><!-- /header -->
+      <div data-role="content" class="content">
+        <ul data-role="listview" data-filter="true">
+        </ul>
+      </div><!-- /content -->
+    </div><!-- /page -->
+
+    <div data-role="page" data-theme="b" data-add-back-btn="true" id="map">
+      <div data-role="header">
+        <h1>Map</h1>
+      </div><!-- /header -->
+      <div data-role="content" class="content">
+        <div id="map-canvas"></div>
+      </div><!-- /content -->
+    </div><!-- /page -->
+
+    <script id="routeTemplate" type="text/x-jquery-tmpl">
+      <li data-id=${id} class='routeButton'><a href="#">Route ${id} - ${name}</a></li>
+    </script>
+
+    <script id="stationTemplate" type="text/x-jquery-tmpl">
+      <li class='stationButton'><a href="#">${Station.name}</a></li>
+    </script>
+
+    <script id="stopTemplate" type="text/x-jquery-tmpl">
+      <li class='stopButton'><a href="#">${Spot.name}</a></li>
+    </script>
+
+    <script id="busTemplate" type="text/x-jquery-tmpl">
+      <li data-lat=${Bus.lat} data-lng=${Bus.lng} data-dir=${Bus.direction} class='busButton'><a href="#">${Bus.direction}bound ${Bus.destination}</a></li>
+    </script>
+
+    <script type="text/javascript">
+      $('#routeTemplate').template('routeTemplate');
+      $('#stationTemplate').template('stationTemplate');
+      $('#stopTemplate').template('stopTemplate');
+      $('#busTemplate').template('busTemplate');
+    </script>
+
+  </body>
+</html>
